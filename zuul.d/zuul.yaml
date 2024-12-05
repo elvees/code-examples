@@ -1,4 +1,20 @@
+- job:
+    name: code-examples-mcstudio-build
+    description: Build mcstudio samples in this project
+    pre-run: playbooks/install-mcstudio.yaml
+    run: playbooks/build-mcstudio-projects.yaml
+    vars:
+      zuul_logs_dir: "{{ ansible_user_dir }}/zuul-output/logs"
+      mcs_root_dir: "{{ ansible_user_dir }}/mcstudio"
+      mcs_url: https://nc2.elvees.com/index.php/s/cgiEBKSxZmYHgGt/download?path=%2F&files=MCStudio_DEMO_2024.09_70_Setup.sh&downloadStartSecret=40rx9s0ys0g
+      mcs_samples_dir: "{{ ansible_user_dir }}/{{ zuul.project.src_dir }}/mcstudio"
+
+      # extra options passed for MC Studio, see "eclipse -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild"
+      # for available options
+      mcs_build_options: -build all
+
 - project:
     check:
       jobs:
+        - code-examples-mcstudio-build
         - pre-commit

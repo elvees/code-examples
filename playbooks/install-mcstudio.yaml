@@ -1,0 +1,28 @@
+- hosts: all
+  vars:
+    mcs_dl_dir: "{{ ansible_user_dir }}/mcs-dl"
+  tasks:
+    - name: Create directory for MCStudio
+      ansible.builtin.file:
+        state: directory
+        path: "{{ mcs_dl_dir }}"
+
+    - name: Download MCStudio
+      ansible.builtin.get_url:
+        url: "{{ mcs_url }}"
+        dest: "{{ mcs_dl_dir }}/setup.sh"
+        mode: 0700
+
+    - name: Install MCStudio
+      args:
+        chdir: "{{ mcs_dl_dir }}"
+      ansible.builtin.shell: |
+        set -ex
+        mkdir -p $(dirname {{ mcs_root_dir }})
+
+        mkdir subdir
+        ./setup.sh --target subdir
+        mcs_dir=$(ls subdir)
+        mv subdir/$mcs_dir {{ mcs_root_dir }}
+
+        echo MC Studio version: $mcs_dir > {{ zuul_logs_dir }}/report.txt

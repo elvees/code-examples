@@ -1,0 +1,38 @@
+- hosts: all
+  vars:
+    logs_binaries_dir: "{{ zuul_logs_dir }}/mcstudio-samples-binaries"
+  tasks:
+    - name: Build MCStudio projects
+      ansible.builtin.shell: |
+        set -ex
+        export LD_LIBRARY_PATH={{ mcs_root_dir }}/ToolsMGCC/local/lib
+        export MCS4_HOME={{ mcs_root_dir }}
+        {{ mcs_root_dir }}/eclipse/eclipse \
+          -nosplash \
+          -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+          -importAll {{ mcs_samples_dir }} \
+          {{ mcs_build_options }}
+
+    - name: Collect samples binaries
+      ansible.builtin.shell: |
+        set -ex
+        mkdir -p {{ logs_binaries_dir }}
+        find . -type f -name '*.elf' -exec cp --parents {} {{ logs_binaries_dir }} \;
+      args:
+        chdir: "{{ mcs_samples_dir }}"
+
+    - name: Create report
+      ansible.builtin.shell: |
+        set -ex
+        gcc_version=$({{ mcs_root_dir }}/ToolsMGCC/bin/mipsel-elf32-gcc --version | head -n1)
+        echo GCC Version: $gcc_version >> {{ zuul_logs_dir }}/report.txt
+
+    - name: Return artifacts to Zuul
+      zuul_return:
+        data:
+          zuul:
+            artifacts:
+              - name: MC Studio samples binaries
+                url: "{{ logs_binaries_dir | basename }}"
+              - name: Report.txt
+                url: report.txt
