@@ -4,4 +4,5 @@
 
 Список примеров:
 
-- [mct06-spfmic](./mct06-spfmic/): пример работы с каналами GigaSpaceWire.
+- [mct06-spfmic](./mct06-spfmic/): Пример работы с каналами GigaSpaceWire.
+- [mct06-cpu-dsp-int](./mct06-cpu-dsp-int/): Пример работы с прерываниями DSP-ядер.

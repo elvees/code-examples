@@ -1,0 +1,30 @@
+# Copyright 2023-2025 RnD Center "ELVEES", JSC
+# SPDX-License-Identifier: MIT
+
+ .global DSP1_calculate
+
+ .global DSP1_In_A
+ .global DSP1_In_B
+ .global DSP1_Out_C
+
+ .text
+ DSP1_calculate:
+    MOVE DSP1_In_A,A0.S
+    MOVE DSP1_In_B,A1.S
+    MOVE DSP1_Out_C,A2.S
+
+    MOVE (A0),R0.L
+    MOVE (A1),R2.L
+
+    ADD R0,R2,R0
+
+    MOVE R0.L,(A2)
+
+    STOP
+    nop
+    nop
+
+ .data
+    DSP1_In_A: .word 0
+    DSP1_In_B: .word 0
+    DSP1_Out_C: .word 0
