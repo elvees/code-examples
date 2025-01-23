@@ -4,4 +4,4 @@
 
 Список примеров:
 
-- [mct06_SPFMIC](./mct06_SPFMIC/): пример работы с каналами GigaSpaceWire.
+- [mct06-spfmic](./mct06-spfmic/): пример работы с каналами GigaSpaceWire.
