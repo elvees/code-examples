@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MCProject>
+  <ProjectProperty id="MultiCoreProject.LinkScriptGen" value="true"/>
+  <ProjectProperty id="MultiCoreProject.EntryPoint" value="_start"/>
+  <ProjectProperty id="MultiCoreProject.HeapSize" value="0x0800"/>
+  <ProjectProperty id="MultiCoreProject.StackSize" value="0x1000"/>
+  <ProjectProperty id="MultiCoreProject.Align" value="8"/>
+  <ProjectProperty id="MultiCoreProject.Template" value="org.elvees.mcs4.projmanager.simple_template_MCT_03P"/>
+  <ProjectLayout>
+    <Section>
+      <File_Path>main.c</File_Path>
+      <Section_Name>text</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>main.c</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>startup.s</File_Path>
+      <Section_Name>text</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>startup.s</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>handler.s</File_Path>
+      <Section_Name>textI</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xB8000180</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>handler.s</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/risc_interrupt.c</File_Path>
+      <Section_Name>text</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/risc_interrupt.c</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/system.c</File_Path>
+      <Section_Name>text</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/system.c</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/mt29f8g.c</File_Path>
+      <Section_Name>text</Section_Name>
+      <Section_Type>0</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+    <Section>
+      <File_Path>src/mt29f8g.c</File_Path>
+      <Section_Name>data</Section_Name>
+      <Section_Type>1</Section_Type>
+      <Memory_Type>0</Memory_Type>
+      <Address>0xb8001000</Address>
+      <CPU_Type>0</CPU_Type>
+    </Section>
+  </ProjectLayout>
+</MCProject>
