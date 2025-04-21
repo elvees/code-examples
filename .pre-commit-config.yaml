@@ -66,6 +66,37 @@ repos:
         language: fail
         files: .*[A-ZА-Я]+.*
         exclude: ^.*README\.md$|^LICENSE\.txt$|^Pipfile$
+      - id: ascii-names-check
+        name: Non-ASCII chars in filenames check
+        language: python
+        entry: |
+          python -c '
+          import os, sys, io
+          sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+          sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
+
+          MAX_ASCII = 0x7F
+          invalid = {}
+
+          for fullpath in sys.argv[1:]:
+              try:
+                  bad_chars = {i: (c, f"0x{ord(c):04X}") for i, c in enumerate(fullpath) if ord(c) > MAX_ASCII}
+                  if bad_chars:
+                      invalid[fullpath] = bad_chars
+              except Exception as e:
+                  print(f"Warning: {fullpath} - {str(e)}", file=sys.stderr)
+
+          if invalid:
+              print("ERROR: Non-ASCII characters found in paths:", file=sys.stderr)
+              for path, chars in invalid.items():
+                  char_list = ", ".join(f"{c}({code})" for c, code in chars.values())
+                  print(f"  - {path}: {char_list}", file=sys.stderr)
+                  pointer_line = [" "] * len(path)
+                  for pos in chars.keys():
+                      pointer_line[pos] = "^"
+                  print("    " + "".join(pointer_line), file=sys.stderr)
+              sys.exit(1)
+          '
   - repo: https://github.com/bmorcos/pre-commit-hooks-cpp
     rev: 9a5aa38207bf557961110d6a4f7e3a9d352911f9
     hooks:
