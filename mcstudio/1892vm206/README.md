@@ -8,3 +8,4 @@
 - [mct06-cpu-dsp-int](./mct06-cpu-dsp-int/): Пример работы с прерываниями DSP-ядер.
 - [mct06-swic-int](./mct06-swic-int/): Пример работы с прерываниями SpaceWire.
 - [mct06-parallel-flash](./mct06-parallel-flash/): Пример работы с параллельной флеш-памятью.
+- [mct06-ethernet](./mct06-ethernet/): Пример работы с контроллером Ethernet.
