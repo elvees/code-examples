@@ -42,7 +42,7 @@ repos:
       - id: forbid-crlf
       - id: remove-crlf
       - id: insert-license
-        files: ''
+        files: ""
         types_or: [c, header]
         args:
           - --comment-style=//
@@ -107,7 +107,7 @@ repos:
           - --language=c
           - --force
   - repo: https://review.elvees.com/pre-commit-hooks
-    rev: 53a24a4dec9736b5e4a625e75c3172299357cc22
+    rev: 29af4c62c1898246963b86fffcddd3e20d42b815
     hooks:
       - id: check-copyright
       - id: check-copyright
